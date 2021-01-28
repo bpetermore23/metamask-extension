@@ -62,6 +62,7 @@ const CONFIRM_TOKEN_METHOD_PATH = '/token-method'
 const SIGNATURE_REQUEST_PATH = '/signature-request'
 const DECRYPT_MESSAGE_REQUEST_PATH = '/decrypt-message-request'
 const ENCRYPTION_PUBLIC_KEY_REQUEST_PATH = '/encryption-public-key-request'
+const ADD_ETHEREUM_CHAIN_REQUEST_ROUTE = '/add-ethereum-chain-request'
 
 // Used to pull a convenient name for analytics tracking events. The key must
 // be react-router ready path, and can include params such as :id for popup windows
@@ -168,6 +169,7 @@ export {
   SIGNATURE_REQUEST_PATH,
   DECRYPT_MESSAGE_REQUEST_PATH,
   ENCRYPTION_PUBLIC_KEY_REQUEST_PATH,
+  ADD_ETHEREUM_CHAIN_REQUEST_ROUTE,
   INITIALIZE_METAMETRICS_OPT_IN_ROUTE,
   ADVANCED_ROUTE,
   SECURITY_ROUTE,

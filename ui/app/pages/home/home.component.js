@@ -27,7 +27,9 @@ import {
   AWAITING_SWAP_ROUTE,
   BUILD_QUOTE_ROUTE,
   VIEW_QUOTE_ROUTE,
+  ADD_ETHEREUM_CHAIN_REQUEST_ROUTE,
 } from '../../helpers/constants/routes'
+import { MESSAGE_TYPE } from '../../../../shared/constants/app'
 
 const LEARN_MORE_URL =
   'https://metamask.zendesk.com/hc/en-us/articles/360045129011-Intro-to-MetaMask-v8-extension'
@@ -72,6 +74,7 @@ export default class Home extends PureComponent {
     setWeb3ShimUsageAlertDismissed: PropTypes.func.isRequired,
     originOfCurrentTab: PropTypes.string,
     disableWeb3ShimUsageAlert: PropTypes.func.isRequired,
+    pendingApprovals: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   state = {
@@ -89,6 +92,7 @@ export default class Home extends PureComponent {
       haveSwapsQuotes,
       showAwaitingSwapScreen,
       swapsFetchParams,
+      pendingApprovals,
     } = this.props
 
     this.setState({ mounted: true })
@@ -106,6 +110,13 @@ export default class Home extends PureComponent {
       history.push(CONFIRM_TRANSACTION_ROUTE)
     } else if (Object.keys(suggestedTokens).length > 0) {
       history.push(CONFIRM_ADD_SUGGESTED_TOKEN_ROUTE)
+    } else if (
+      pendingApprovals.find(
+        (pendingApproval) =>
+          pendingApproval.type === MESSAGE_TYPE.ADD_ETHEREUM_CHAIN,
+      )
+    ) {
+      history.push(ADD_ETHEREUM_CHAIN_REQUEST_ROUTE)
     }
   }
 

@@ -35,6 +35,7 @@ import Asset from '../asset'
 
 import {
   ADD_TOKEN_ROUTE,
+  ADD_ETHEREUM_CHAIN_REQUEST_ROUTE,
   ASSET_ROUTE,
   CONFIRM_ADD_SUGGESTED_TOKEN_ROUTE,
   CONFIRM_ADD_TOKEN_ROUTE,
@@ -61,6 +62,7 @@ import {
 } from '../../../../shared/constants/app'
 import { getEnvironmentType } from '../../../../app/scripts/lib/util'
 import { TRANSACTION_STATUSES } from '../../../../shared/constants/transaction'
+import ConfirmationPage from '../confirmation'
 
 export default class Routes extends Component {
   static propTypes = {
@@ -154,6 +156,10 @@ export default class Routes extends Component {
           component={ConfirmAddSuggestedTokenPage}
           exact
         />
+        <Authenticated
+          path={ADD_ETHEREUM_CHAIN_REQUEST_ROUTE}
+          component={ConfirmationPage}
+        />
         <Authenticated path={NEW_ACCOUNT_ROUTE} component={CreateAccountPage} />
         <Authenticated
           path={`${CONNECT_ROUTE}/:id`}
@@ -240,7 +246,14 @@ export default class Routes extends Component {
       }),
     )
 
-    return isHandlingPermissionsRequest
+    const isHandlingAddEthereumChainRequest = Boolean(
+      matchPath(location.pathname, {
+        path: ADD_ETHEREUM_CHAIN_REQUEST_ROUTE,
+        exact: false,
+      }),
+    )
+
+    return isHandlingPermissionsRequest || isHandlingAddEthereumChainRequest
   }
 
   render() {
