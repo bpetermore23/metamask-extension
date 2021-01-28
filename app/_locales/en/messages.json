@@ -109,6 +109,13 @@
   "alertsSettingsDescription": {
     "message": "Enable or disable each alert"
   },
+  "allowCustomNetworkDescription": {
+    "message": "This will allow this network to be used within MetaMask."
+  },
+  "allowCustomNetworkTitle": {
+    "message": "Allow this site to add $1 Network?",
+    "description": "$1 will be the provided name of network or empty string"
+  },
   "allowExternalExtensionTo": {
     "message": "Allow this external extension to:"
   },
@@ -148,7 +155,7 @@
     "message": "Approval Tx Gas Cost"
   },
   "approve": {
-    "message": "Approve spend limit"
+    "message": "Approve"
   },
   "approveSpendLimit": {
     "message": "Approve $1 spend limit",
@@ -212,7 +219,7 @@
     "message": "Basic"
   },
   "blockExplorerUrl": {
-    "message": "Block Explorer"
+    "message": "Block Explorer URL"
   },
   "blockExplorerView": {
     "message": "View account at $1",
@@ -405,6 +412,9 @@
   },
   "currencyConversion": {
     "message": "Currency Conversion"
+  },
+  "currencySymbol": {
+    "message": "Currency Symbol"
   },
   "currentAccountNotConnected": {
     "message": "Your current account is not connected"
@@ -1027,6 +1037,9 @@
   "negativeETH": {
     "message": "Can not send negative amounts of ETH."
   },
+  "networkDetails": {
+    "message": "Network Details"
+  },
   "networkName": {
     "message": "Network Name"
   },
@@ -1035,6 +1048,9 @@
   },
   "networkSettingsDescription": {
     "message": "Add and edit custom RPC networks"
+  },
+  "networkURL": {
+    "message": "Network URL"
   },
   "networks": {
     "message": "Networks"
@@ -1137,6 +1153,9 @@
   "onboardingReturnNotice": {
     "message": "\"$1\" will close this tab and direct back to $2",
     "description": "Return the user to the site that initiated onboarding"
+  },
+  "onlyAddNetworksYouTrust": {
+    "message": "Only add networks you trust."
   },
   "onlyAddTrustedNetworks": {
     "message": "A malicious Ethereum network provider can lie about the state of the blockchain and record your network activity. Only add custom networks you trust."
@@ -2057,6 +2076,9 @@
   },
   "unlockMessage": {
     "message": "The decentralized web awaits"
+  },
+  "untrustworthyNetworksCanBeRisky": {
+    "message": "Adding untrustworthy networks can lead to scam and phishing risks"
   },
   "updatedWithDate": {
     "message": "Updated $1"
