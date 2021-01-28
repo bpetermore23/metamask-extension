@@ -2453,6 +2453,30 @@ export function clearPermissions() {
   }
 }
 
+// Pending Approvals
+
+/**
+ * @param {string} id
+ * @param {any} [value]
+ */
+export function resolvePendingApproval(id, value) {
+  return (dispatch) => {
+    background.resolvePendingApproval(id, value)
+    dispatch(closeCurrentNotificationWindow())
+  }
+}
+
+/**
+ * @param {string} id
+ * @param {Error} [error]
+ */
+export function rejectPendingApproval(id, error) {
+  return (dispatch) => {
+    background.rejectPendingApproval(id, error)
+    dispatch(closeCurrentNotificationWindow())
+  }
+}
+
 export function setFirstTimeFlowType(type) {
   return (dispatch) => {
     log.debug(`background.setFirstTimeFlowType`)
