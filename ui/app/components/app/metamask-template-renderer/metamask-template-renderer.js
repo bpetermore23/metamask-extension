@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
+import { isEqual } from 'lodash'
 import { safeComponentList } from './safe-component-list'
 
 const MetaMaskTemplateRenderer = ({ sections }) => {
@@ -11,10 +12,10 @@ const MetaMaskTemplateRenderer = ({ sections }) => {
   }
   return (
     <>
-      {sections.reduce((acc, child, index) => {
+      {sections.reduce((allChildren, child, index) => {
         // React can render strings directly, so push them into the accumulator
         if (typeof child === 'string') {
-          acc.push(child)
+          allChildren.push(child)
         } else if (child) {
           // The other option is one of our Sections, which contains
           // element, children, and props.
@@ -30,14 +31,14 @@ const MetaMaskTemplateRenderer = ({ sections }) => {
               <MetaMaskTemplateRenderer sections={children} />
             ) : null
           if (Element) {
-            acc.push(
+            allChildren.push(
               <Element key={`${element}${index + 0}`} {...props}>
                 {childrenOrNull}
               </Element>,
             )
           }
         }
-        return acc
+        return allChildren
       }, [])}
     </>
   )
@@ -61,4 +62,6 @@ MetaMaskTemplateRenderer.propTypes = {
   sections: ValidChildren,
 }
 
-export default memo(MetaMaskTemplateRenderer)
+export default memo(MetaMaskTemplateRenderer, (prevProps, nextProps) => {
+  return isEqual(prevProps.sections, nextProps.sections)
+})
