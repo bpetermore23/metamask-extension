@@ -46,7 +46,7 @@ const MetaMaskTemplateRenderer = ({ sections }) => {
 
 const SectionShape = {
   props: PropTypes.object,
-  element: PropTypes.oneOf(Object.keys(safeComponentList)),
+  element: PropTypes.oneOf(Object.keys(safeComponentList)).isRequired,
 }
 
 const ValidChildren = PropTypes.oneOfType([
